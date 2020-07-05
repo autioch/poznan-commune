@@ -1,0 +1,23 @@
+{
+  "name": "poznan-tram",
+  "version": "1.0.0",
+  "description": "",
+  "main": "getTramStops.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/autioch/poznan-tram.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/autioch/poznan-tram/issues"
+  },
+  "homepage": "https://github.com/autioch/poznan-tram#readme",
+  "dependencies": {
+    "csv-parser": "^2.3.3",
+    "csv-writer": "^1.6.0"
+  }
+}
