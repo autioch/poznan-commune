@@ -18,6 +18,7 @@
   "homepage": "https://github.com/autioch/poznan-tram#readme",
   "dependencies": {
     "csv-parser": "^2.3.3",
-    "csv-writer": "^1.6.0"
+    "csv-writer": "^1.6.0",
+    "serve-local": "^1.0.1"
   }
 }

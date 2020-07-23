@@ -3,7 +3,7 @@ import fs from 'fs/promises';
 import dirName from './dirName.mjs';
 import { createRequire } from 'module';
 import { join } from 'path';
-import { MPK_AGENCY, TRAM_ROUTE, BUS_ROUTE, CSV_HEADER } from './consts.mjs';
+import { MPK_AGENCY, TRAM_ROUTE, BUS_ROUTE, STOPS_CSV_HEADER } from './consts.mjs';
 
 const __dirname = dirName(import.meta);
 const require = createRequire(import.meta.url);
@@ -22,7 +22,7 @@ const getTable = (tableName) => cache[tableName] || (cache[tableName] = require(
 await    fs.writeFile(join(__dirname, 'stops.json'), JSON.stringify(stops));
   // const csvWriter =  CSVWriter.createObjectCsvWriter({
   //   path: join(__dirname, 'stops.csv'),
-  //   header: CSV_HEADER
+  //   header: STOPS_CSV_HEADER
   // })
   //
   // await csvWriter.writeRecords(stops);
