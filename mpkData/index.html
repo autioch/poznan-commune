@@ -57,7 +57,6 @@
           const isBus = routeIds.some((routeId)=> routes[routeId].route_type == BUS_ROUTE);
           const isTram = routeIds.some((routeId)=> routes[routeId].route_type == TRAM_ROUTE);
 
-console.log(isBus, isTram);
           ctx.beginPath();
           ctx.strokeStyle = AGENCY_COLORS[agency];
           ctx.lineWidth = isBus ? 1 : 4;
@@ -77,6 +76,8 @@ console.log(isBus, isTram);
           el.style.color = AGENCY_COLORS[agency.agency_id];
           legend.appendChild(el);
         })
+
+
     }
 
     Promise

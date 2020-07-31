@@ -39,17 +39,17 @@ function getMaxMin(arr){
   const trips = getTable('trips');
   const shapes = getTable('shapes');
 
-  const lats = shapes.map(({shape_pt_lat}) => parseFloat(shape_pt_lat));
-  const lons = shapes.map(({shape_pt_lon}) => parseFloat(shape_pt_lon));
-
-  const [minX, maxX] = getMaxMin(shapes.map(({shape_pt_lat}) => parseFloat(shape_pt_lat)));
-  const [minY, maxY] = getMaxMin(shapes.map(({shape_pt_lon}) => parseFloat(shape_pt_lon)));
+  const [minY, maxY] = getMaxMin(shapes.map(({shape_pt_lat}) => parseFloat(shape_pt_lat)));
+  const [minX, maxX] = getMaxMin(shapes.map(({shape_pt_lon}) => parseFloat(shape_pt_lon)));
+  //
+  // const [minX, maxX] = getMaxMin(shapes.map(({shape_pt_lat}) => parseFloat(shape_pt_lat)));
+  // const [minY, maxY] = getMaxMin(shapes.map(({shape_pt_lon}) => parseFloat(shape_pt_lon)));
   const extractRouteId = ({route_id})=> route_id;
   const getAgency = route_id => routes[route_id].agency_id;
 
   const shapesDict = shapes.reduce((obj, {shape_id, shape_pt_lat, shape_pt_lon, shape_pt_sequence}) => {
     if (!obj[shape_id]){ obj[shape_id] = [] };
-    obj[shape_id].push([shape_pt_sequence, shape_pt_lat, shape_pt_lon]);
+    obj[shape_id].push([shape_pt_sequence, shape_pt_lon, shape_pt_lat]);
     return obj;
   }, {});
 

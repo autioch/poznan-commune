@@ -1,0 +1,52 @@
+{
+  "name": "leaftlet-map",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=9.0.0",
+    "npm": ">=5.0.0"
+  },
+  "scripts": {
+    "start": "webpack --config webpack.config.js --hide-modules --watch",
+    "build": "webpack --config webpack.config.js --hide-modules -p",
+    "lint": "eslint ./src --fix --ext .js",
+    "lint:test": "eslint ./spec --fix --ext .js",
+    "test": "mocha --reporter=list spec/**/*.spec.js",
+    "test:watch": "mocha --reporter=min --watch spec/**/*.spec.js & exit 0"
+  },
+  "dependencies": {
+    "@babel/core": "7.9.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "7.8.3",
+    "@babel/plugin-proposal-numeric-separator": "7.8.3",
+    "@babel/plugin-proposal-optional-chaining": "7.9.0",
+    "@babel/plugin-syntax-dynamic-import": "7.8.3",
+    "@babel/preset-env": "7.9.0",
+    "autoprefixer": "9.7.4",
+    "babel-loader": "8.1.0",
+    "clean-webpack-plugin": "3.0.0",
+    "core-js": "3.6.4",
+    "css-loader": "3.4.2",
+    "file-loader": "5.1.0",
+    "html-webpack-plugin": "3.2.0",
+    "leaflet": "^1.6.0",
+    "mini-css-extract-plugin": "0.9.0",
+    "node-sass": "4.13.1",
+    "postcss-loader": "3.0.0",
+    "sass-loader": "7.0.1",
+    "uglifyjs-webpack-plugin": "2.2.0",
+    "webpack": "4.42.0",
+    "webpack-cli": "3.3.11",
+    "webpack-livereload-plugin": "2.1.1"
+  },
+  "devDependencies": {
+    "chai": "4.0.2",
+    "eslint": "4.8.0",
+    "eslint-config-qb": "1.0.0",
+    "mocha": "3.4.2",
+    "serve-local": "1.0.1"
+  },
+  "moduleRoots": [
+    "src",
+    "src/interface"
+  ]
+}
