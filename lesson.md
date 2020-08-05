@@ -1,0 +1,2 @@
+- longitude - długość geograficzna - -180° west to 180° east, vertical lines on the globe, time zones
+- latitude - szerokość geograficzna - 90° north to -90° south, horizontal lines on the globe, degrees, minutes, seconds
