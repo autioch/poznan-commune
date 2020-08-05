@@ -1,36 +1,28 @@
-/* eslint-disable no-bitwise */
+/* eslint-disable no-bitwise, camelcase */
 import spherical from 'spherical';
 import L from 'leaflet';
-const { io: { GeoJSONParser, GeoJSONReader } } = require('jsts');
+import union from '@turf/union';
 
-// import wgs84 from 'wgs84';
-// const RADIUS_ANGLE = RADIUS / wgs84.RADIUS * 180 / Math.PI;
+// import { polygon } from '@turf/helpers';
 
 const RADIUS = 400;
-const ARCS = 4;
+const ARCS = 8;
 const ANGLES = new Array(ARCS + 1).fill(null).map((_, i) => (i / ARCS) * 360); // eslint-disable-line no-unused-vars
 
-const reader = new GeoJSONReader();
-const parser = new GeoJSONParser();
+function v2(stops, color) {
+  const polygonUnion = stops.map(({ stop_lon, stop_lat }) => {
+    const center = [stop_lon, stop_lat];
 
-function circle(stopItem) {
-  const center = [stopItem.stop_lon, stopItem.stop_lat];
+    return { // hack for invariant helper from truf
+      coordinates: [ANGLES.map((angle) => spherical.radial(center, angle, RADIUS))]
+    };
+  }).reduce(union);
 
-  return reader.read({
-    type: 'Polygon',
-    coordinates: [ANGLES.map((angle) => spherical.radial(center, angle, RADIUS))]
-  });
-}
-
-export default function stopsPolygon(stops, color) {
-  const polygonUnion = stops.map(circle).reduce((a, b) => a.union(b));
-
-  return L.geoJson({
-    type: 'Feature',
-    geometry: parser.write(polygonUnion)
-  }, {
+  return L.geoJson(polygonUnion, {
     color,
     fillColor: color,
     fillOpacity: 0.3
   });
 }
+
+export default v2;

@@ -11,4 +11,4 @@ const mapInstance = setupMap();
 
 renderRoutes(mapInstance);
 
-stopsPolygon(stops.slice(0, 500), '#093').addTo(mapInstance);
+stopsPolygon(stops, '#093').addTo(mapInstance);
