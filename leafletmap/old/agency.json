@@ -1,0 +1,82 @@
+[
+  {
+    "agency_id": "2",
+    "agency_name": "Miejskie Przedsiębiorstwo Komunikacyjne Sp. z o.o. w Poznaniu",
+    "agency_url": "http://www.mpk.poznan.pl",
+    "agency_timezone": "Europe/Warsaw",
+    "agency_phone": "61 646 33 44",
+    "agency_lang": "pl"
+  },
+  {
+    "agency_id": "4",
+    "agency_name": "Kórnickie Przedsiębiorstwo Autobusowe KOMBUS Sp. z o.o.",
+    "agency_url": "http://www.kombus.com.pl",
+    "agency_timezone": "Europe/Warsaw",
+    "agency_phone": "61 898 06 66",
+    "agency_lang": "pl"
+  },
+  {
+    "agency_id": "5",
+    "agency_name": "Przedsiębiorstwo Wielobranżowe TRANSKOM Sp. z o.o.",
+    "agency_url": "http://www.transkom.com.pl",
+    "agency_timezone": "Europe/Warsaw",
+    "agency_phone": "61 651 47 14",
+    "agency_lang": "pl"
+  },
+  {
+    "agency_id": "6",
+    "agency_name": "Przedsiębiorstwo Transportowe Translub Sp. z o.o.",
+    "agency_url": "http://www.translub.pl",
+    "agency_timezone": "Europe/Warsaw",
+    "agency_phone": "61 813 01 45",
+    "agency_lang": "pl"
+  },
+  {
+    "agency_id": "7",
+    "agency_name": "Przedsiębiorstwo Usług Komunalnych Komorniki sp. z o.o.",
+    "agency_url": "http://www.pukkomorniki.pl",
+    "agency_timezone": "Europe/Warsaw",
+    "agency_phone": "61 810 81 71",
+    "agency_lang": "pl"
+  },
+  {
+    "agency_id": "8",
+    "agency_name": "Zakład Usług Komunikacyjnych ROKBUS Sp. z o.o.",
+    "agency_url": "http://www.rokbus.com.pl",
+    "agency_timezone": "Europe/Warsaw",
+    "agency_phone": "61 814 54 31",
+    "agency_lang": "pl"
+  },
+  {
+    "agency_id": "9",
+    "agency_name": "Zakład Komunikacji Publicznej Suchy Las Sp. z o.o.",
+    "agency_url": "http://www.zkp.com.pl",
+    "agency_timezone": "Europe/Warsaw",
+    "agency_phone": "61 811 65 57",
+    "agency_lang": "pl"
+  },
+  {
+    "agency_id": "10",
+    "agency_name": "Komunikacja Gminy Tarnowo Podgórne TPBUS Sp. z o.o.",
+    "agency_url": "http://www.tpbus.com.pl",
+    "agency_timezone": "Europe/Warsaw",
+    "agency_phone": "61 814 67 92",
+    "agency_lang": "pl"
+  },
+  {
+    "agency_id": "11",
+    "agency_name": "Swarzędzkie Przedsiębiorstwo Komunalne Sp. z o.o.",
+    "agency_url": "http://www.spk.swarzedz.pl",
+    "agency_timezone": "Europe/Warsaw",
+    "agency_phone": "61 817 34 21",
+    "agency_lang": "pl"
+  },
+  {
+    "agency_id": "12",
+    "agency_name": "Zakład Komunalny w Kleszczewie Sp. z o.o.",
+    "agency_url": "http://www.zk.kleszczewo.pl",
+    "agency_timezone": "Europe/Warsaw",
+    "agency_phone": "61 817 60 62",
+    "agency_lang": "pl"
+  }
+]

@@ -1,5 +1,5 @@
 // import agencies from './agency.json';
-import shapesParsed from './shapesParsed.json';
+import shapesParsed from './data/shapesParsed.json';
 
 // import L from 'leaflet';
 //
