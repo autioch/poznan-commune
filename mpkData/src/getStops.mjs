@@ -34,6 +34,5 @@ import { TRAM_ROUTE, BUS_ROUTE } from './consts.mjs';
     })
     .sort((a, b) => a.stopName.localeCompare(b.stopName));
 
-  await saveOutput('agency', getDbTable('agency'));
   await saveOutput('stops', stops);
 })();

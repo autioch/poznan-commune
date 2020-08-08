@@ -17,5 +17,5 @@ import { AGENCY_COLORS } from './consts.mjs';
     return obj;
   }, {});
 
-  await saveOutput('agencies', agencies);
+  await saveOutput('agencies', agencies, true);
 })();
