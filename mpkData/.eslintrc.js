@@ -10,6 +10,7 @@ module.exports = {
     'no-magic-numbers': ['off'],
     'no-return-assign': ['off'],
     'camelcase': ['off'],
+    'no-console': ['off'],
   },
   env: {
     node: true

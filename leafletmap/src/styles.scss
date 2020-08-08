@@ -13,3 +13,10 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.leaflet-popup-content {
+
+  p {
+    margin: 3px 0 !important;
+  }
+}
