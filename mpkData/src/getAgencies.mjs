@@ -1,6 +1,4 @@
-// import { MPK_AGENCY, TRAM_ROUTE, BUS_ROUTE } from './consts.mjs';
-import getDbTable from './getDbTable.mjs';
-import saveOutput from './saveOutput.mjs';
+import { getDbTable, saveOutput } from './utils.mjs';
 import { AGENCY_COLORS } from './consts.mjs';
 
 (async () => {

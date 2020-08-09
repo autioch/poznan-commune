@@ -1,7 +1,7 @@
 import fs from 'fs';
 import csvParser from 'csv-parser';
 import { basename } from 'path';
-import joinFromCurrentDir from './joinFromCurrentDir.mjs';
+import { joinFromCurrentDir } from './utils.mjs';
 
 const join = joinFromCurrentDir(import.meta);
 

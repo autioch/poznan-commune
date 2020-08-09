@@ -1,5 +1,4 @@
-import getDbTable from './getDbTable.mjs';
-import saveOutput from './saveOutput.mjs';
+import { getDbTable, saveOutput } from './utils.mjs';
 
 // arrays have 200000 items, no spread or math.min/max
 function getMaxMin(arr) {
