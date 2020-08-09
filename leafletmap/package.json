@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "chai": "4.0.2",
-    "eslint": "4.8.0",
+    "eslint": "4.18.2",
     "eslint-config-qb": "1.0.0",
     "mocha": "3.4.2",
     "serve-local": "1.0.1"
