@@ -1,30 +1,7 @@
 import L from 'leaflet';
 import stops from './data/stops.json';
 import agencies from './data/agencies.json';
-
-const isMpk = (id) => id === '2';
-
-function getColor({ agencyIds }) {
-  if (agencyIds.every(isMpk)) {
-    return '#090';
-  }
-  if (agencyIds.some(isMpk)) {
-    return '#fb0';
-  }
-
-  return '#f00';
-}
-
-function getFill({ isForBus, isForTram }) {
-  if (isForTram && !isForBus) {
-    return '#090';
-  }
-  if (isForTram && isForBus) {
-    return '#fb0';
-  }
-
-  return '#f00';
-}
+import { TRAM_STOP, BUS_STOP } from './consts';
 
 function getStopPopup({ zoneId, stopName, routeIds, agencyIds }) {
   return `
@@ -36,15 +13,20 @@ function getStopPopup({ zoneId, stopName, routeIds, agencyIds }) {
 
 export default function renderStopCircles(mapInstance) {
   stops.forEach((stop) => { // eslint-disable-line no-shadow
-    const { latitude, longitude, zoneId } = stop;
+    const { latitude, longitude, isForTram } = stop;
+    const color = isForTram ? TRAM_STOP : BUS_STOP;
 
     L.circle([latitude, longitude], {
-      radius: 50,
+      radius: 5,
 
-      color: getColor(stop),
-      fillColor: getFill(stop),
-      fillOpacity: 0.5,
-      dashArray: zoneId === 'A' ? null : [4, 4]
+      // border
+      color,
+      weight: 5,
+      opacity: 1,
+
+      // background
+      fillColor: color,
+      fillOpacity: 0.5
     }).addTo(mapInstance).bindPopup(getStopPopup(stop));
   });
 }

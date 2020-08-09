@@ -2,15 +2,12 @@ import { saveOutput, readOutput } from './utils.mjs';
 import spherical from 'spherical';
 import { MPK_AGENCY } from './consts.mjs';
 import union from '@turf/union';
-
-// import intersect from '@turf/intersect';
-// import difference from '@turf/difference';
 import turf from '@turf/turf';
 
 const ARCS = 18;
 const ANGLES = new Array(ARCS + 1).fill(null).map((_, i) => (i / ARCS) * 360); // eslint-disable-line no-unused-vars
 
-function stopToCoordinates(radius) {
+function stopToCircle(radius) {
   return ({ latitude, longitude }) => {
     const center = [longitude, latitude];
 
@@ -20,46 +17,53 @@ function stopToCoordinates(radius) {
   };
 }
 
-function cleanUp(multiPolygon) {
-  const cleaned = turf.cleanCoords(multiPolygon);
+const circle100 = stopToCircle(100);
+const circle200 = stopToCircle(200);
+const circle300 = stopToCircle(300);
+const circle400 = stopToCircle(400);
+const circle500 = stopToCircle(500);
 
-  // if (turf.kinks(cleaned).features.length) {
-  //   const fixed = turf.unkinkPolygon(cleaned);
-  //
-  //   // console.log('fixed', fixed.features.map((i) => i.geometry));
-  //
-  //   return fixed;
-  // }
+const poly100 = (stopList) => turf.cleanCoords(stopList.map(circle100).reduce(union.default));
+const poly200 = (stopList) => turf.cleanCoords(stopList.map(circle200).reduce(union.default));
+const poly300 = (stopList) => turf.cleanCoords(stopList.map(circle300).reduce(union.default));
+const poly400 = (stopList) => turf.cleanCoords(stopList.map(circle400).reduce(union.default));
+const poly500 = (stopList) => turf.cleanCoords(stopList.map(circle500).reduce(union.default));
 
-  return cleaned;
-}
+const modes = Object.entries({
+  '100': poly100,
+  '200': poly200,
+  '300': poly300,
+  '400': poly400,
+  '500': poly500
+});
 
-(async () => {
-  const stops = readOutput('stops');
-  const tramStops = stops.filter(({ isForTram }) => isForTram);
-  const mpkBusStops = stops.filter(({ isForTram, isForBus, agencyIds }) => isForBus && !isForTram && agencyIds.some((agencyId) => agencyId === MPK_AGENCY));
+export default async function getRanges() {
+  const stops = readOutput('stops').filter(({ isNightOnly }) => !isNightOnly);
 
-  // const usedStops = new Set([...tramStops, ...mpkBusStops]);
+  const trams = stops.filter(({ isForTram }) => isForTram);
+  const tramSet = new Set(trams);
 
-  // const otherBusStops = stops.filter((stopItem) => !usedStops.has(stopItem));
+  const mpkBuses = stops.filter((stopItem) => !tramSet.has(stopItem) && stopItem.agencyIds.some((agencyId) => agencyId === MPK_AGENCY));
 
-  const trams = cleanUp(tramStops.map(stopToCoordinates(500)).reduce(union.default));
-  const mpkBuses = cleanUp(mpkBusStops.map(stopToCoordinates(500)).reduce(union.default));
+  const usedStops = new Set([...tramSet, ...mpkBuses]);
+  const otherBuses = stops.filter((stopItem) => !usedStops.has(stopItem));
 
-  // TODO Use turf.mask!
-  // const otherBuses = turf.cleanCoords(otherBusStops.map(stopToCoordinates(300)).reduce(union.default));
-
-  // const mpkBusNotTram = difference(mpkBuses, turf.unkinkPolygon(intersect.default(trams, mpkBuses)));
-
-  // const mpkBusNotTram = intersect.default(mpkBuses, trams);
-
-  const ranges = {
+  const sortedStops = {
     trams,
-    mpkBuses
-
-    // mpkBusNotTram,
-    // otherBuses
+    mpkBuses,
+    otherBuses
   };
 
+  const ranges = Object.entries(sortedStops).reduce((obj, [key, stopList]) => {
+    obj[key] = modes.reduce((obj2, [mode, fn]) => {
+      console.log('Range', key, mode);
+      obj2[mode] = fn(stopList);
+
+      return obj2;
+    }, {});
+
+    return obj;
+  }, {});
+
   await saveOutput('ranges', ranges);
-})();
+}

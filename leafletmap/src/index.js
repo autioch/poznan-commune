@@ -5,13 +5,16 @@ import setupMap from './setupMap';
 
 import renderRanges from './renderRanges';
 
-// import renderRouteLines from './renderRouteLines';
-// import renderStopCircles from './renderStopCircles';
+import renderStopCircles from './renderStopCircles';
+
 // import renderStopMarkers from './renderStopMarkers';
+import renderRouteLines from './renderRouteLines';
 
 const mapInstance = setupMap();
 
-// renderStopMarkers(mapInstance);
-// renderStopCircles(mapInstance);
-// renderRouteLines(mapInstance);
 renderRanges(mapInstance);
+
+renderStopCircles(mapInstance);
+renderRouteLines(mapInstance);
+
+// renderStopMarkers(mapInstance);

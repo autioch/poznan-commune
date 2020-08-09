@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import { getDbTable, saveOutput } from './utils.mjs';
+import { getDbTable, saveOutput, isDailyRoute } from './utils.mjs';
 import { TRAM_ROUTE, BUS_ROUTE, MPK_AGENCY } from './consts.mjs';
 
 const sortPoints = ([a], [b]) => a - b;
@@ -15,7 +15,7 @@ function extractRouteIds(shapeIds) {
   return [...new Set(matchingRouteIds)];
 }
 
-(async () => {
+export default async function getRouteLines() {
   const shapeTable = getDbTable('shapes');
   const shapesDict = shapeTable.reduce((obj, { shape_id, shape_pt_lat, shape_pt_lon, shape_pt_sequence }) => {
     if (!obj[shape_id]) {
@@ -44,21 +44,27 @@ function extractRouteIds(shapeIds) {
 
   const routesMap = new Map(getDbTable('routes').map((route) => [route.route_id, route]));
 
-  const routeLines = Object.entries(uniqueShapeDict).map(([pointsHash, shapeIds]) => {
-    const routeIds = extractRouteIds(shapeIds);
+  const routeLines = Object.entries(uniqueShapeDict)
+    .map(([pointsHash, shapeIds]) => {
+      const routeIds = extractRouteIds(shapeIds).filter(isDailyRoute);
 
-    const isForTram = routeIds.some((routeId) => routesMap.get(routeId).route_type === TRAM_ROUTE);
-    const isForMpkBus = routeIds.some((routeId) => routesMap.get(routeId).route_type === BUS_ROUTE && routesMap.get(routeId).agency_id === MPK_AGENCY);
-    const isForOtherBus = routeIds.some((routeId) => routesMap.get(routeId).route_type === BUS_ROUTE && routesMap.get(routeId).agency_id !== MPK_AGENCY);
+      if (routeIds.length === 0) {
+        return false;
+      }
 
-    return {
-      points: JSON.parse(pointsHash),
-      routeIds,
-      isForTram,
-      isForMpkBus,
-      isForOtherBus
-    };
-  });
+      const isForTram = routeIds.some((routeId) => routesMap.get(routeId).route_type === TRAM_ROUTE);
+      const isForMpkBus = routeIds.some((routeId) => routesMap.get(routeId).route_type === BUS_ROUTE && routesMap.get(routeId).agency_id === MPK_AGENCY);
+      const isForOtherBus = routeIds.some((routeId) => routesMap.get(routeId).route_type === BUS_ROUTE && routesMap.get(routeId).agency_id !== MPK_AGENCY);
+
+      return {
+        points: JSON.parse(pointsHash),
+        routeIds,
+        isForTram,
+        isForMpkBus,
+        isForOtherBus
+      };
+    })
+    .filter(Boolean);
 
   await saveOutput('routeLines', routeLines);
-})();
+}

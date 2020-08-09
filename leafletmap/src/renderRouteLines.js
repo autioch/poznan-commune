@@ -1,5 +1,6 @@
 import L from 'leaflet';
 import routeLines from './data/routeLines.json';
+import { TRAM_LINE, BUS_LINE, OTHER_LINE } from './consts';
 
 function renderList(mapInstance, filter, options) {
   routeLines.filter(filter)
@@ -8,18 +9,18 @@ function renderList(mapInstance, filter, options) {
 
 export default function renderRoutes(mapInstance) {
   renderList(mapInstance, ({ isForOtherBus }) => isForOtherBus, {
-    color: '#000',
+    color: OTHER_LINE,
+    weight: 1,
+    dashArray: [3, 3]
+  });
+  renderList(mapInstance, ({ isForMpkBus }) => isForMpkBus, {
+    color: BUS_LINE,
     weight: 1,
     dashArray: [3, 3]
   });
   renderList(mapInstance, ({ isForTram }) => isForTram, {
-    color: '#f0f',
-    weight: 3,
-    dashArray: [3, 3]
-  });
-  renderList(mapInstance, ({ isForMpkBus }) => isForMpkBus, {
-    color: '#9c0',
-    weight: 1,
+    color: TRAM_LINE,
+    weight: 2,
     dashArray: [3, 3]
   });
 }
