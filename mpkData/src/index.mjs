@@ -8,9 +8,6 @@ import getRanges from './getRanges.mjs';
   console.log('agencies');
   await getAgencies();
 
-  console.log('boundaries');
-  await getBoundaries();
-
   console.log('stops');
   await getStops();
 
@@ -18,6 +15,9 @@ import getRanges from './getRanges.mjs';
   await getRouteLines();
 
   // uses stops
+  console.log('boundaries');
+  await getBoundaries();
+
   console.log('ranges');
   await getRanges();
 })();

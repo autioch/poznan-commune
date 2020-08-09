@@ -1,6 +1,4 @@
-import { getDbTable, saveOutput } from './utils.mjs';
-
-// TODO Use parsed stops instead
+import { saveOutput, readOutput } from './utils.mjs';
 
 // arrays have 200000 items, no spread or math.min/max
 function getMaxMin(arr) {
@@ -17,10 +15,10 @@ function getMaxMin(arr) {
 }
 
 export default async function getBoundaries() {
-  const shapes = getDbTable('shapes');
+  const stops = readOutput('stops');
 
-  const [minLatitude, maxLatitude] = getMaxMin(shapes.map(({ shape_pt_lat }) => parseFloat(shape_pt_lat)));
-  const [minLongitude, maxLongitude] = getMaxMin(shapes.map(({ shape_pt_lon }) => parseFloat(shape_pt_lon)));
+  const [minLatitude, maxLatitude] = getMaxMin(stops.map(({ latitude }) => parseFloat(latitude)));
+  const [minLongitude, maxLongitude] = getMaxMin(stops.map(({ longitude }) => parseFloat(longitude)));
 
   const boundaries = {
     minLatitude,

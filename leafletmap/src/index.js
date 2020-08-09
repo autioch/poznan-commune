@@ -14,7 +14,8 @@ const mapInstance = setupMap();
 
 renderRanges(mapInstance);
 
-renderStopCircles(mapInstance);
-renderRouteLines(mapInstance);
+// renderStopCircles(mapInstance);
+
+// renderRouteLines(mapInstance);
 
 // renderStopMarkers(mapInstance);
