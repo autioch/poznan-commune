@@ -23,8 +23,6 @@ function getDbTable(tableName) {
 }
 
 function saveOutput(fileName, fileContent, debug = false) {
-  console.log(fileName, 'save');
-
   return fs.writeFile(outputJoin(...APP_DATA_FOLDER, `${fileName}.json`), JSON.stringify(fileContent, null, debug ? 2 : undefined)); // eslint-disable-line no-undefined
 }
 

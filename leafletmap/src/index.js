@@ -4,18 +4,16 @@ import 'leaflet/dist/images/marker-shadow.png';
 import setupMap from './setupMap';
 
 import renderRanges from './renderRanges';
-
 import renderStopCircles from './renderStopCircles';
+import renderRouteLines from './renderRouteLines';
 
 // import renderStopMarkers from './renderStopMarkers';
-import renderRouteLines from './renderRouteLines';
 
 const mapInstance = setupMap();
 
 renderRanges(mapInstance);
 
-// renderStopCircles(mapInstance);
-
-// renderRouteLines(mapInstance);
+renderStopCircles(mapInstance);
+renderRouteLines(mapInstance);
 
 // renderStopMarkers(mapInstance);
