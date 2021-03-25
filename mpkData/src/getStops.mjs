@@ -1,5 +1,5 @@
-import { getDbTable, saveOutput, isDailyRoute } from './utils.mjs';
-import { TRAM_ROUTE, BUS_ROUTE } from './consts.mjs';
+import { BUS_ROUTE, TRAM_ROUTE } from './consts.mjs';
+import { getDbTable, isDailyRoute, saveOutput } from './utils.mjs';
 
 export default async function getStops() {
   const stopTimes = getDbTable('stop_times');

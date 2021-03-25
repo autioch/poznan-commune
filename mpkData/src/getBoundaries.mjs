@@ -1,4 +1,4 @@
-import { saveOutput, readOutput } from './utils.mjs';
+import { readOutput, saveOutput } from './utils.mjs';
 
 // arrays have 200000 items, no spread or math.min/max
 function getMaxMin(arr) {

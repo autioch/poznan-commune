@@ -1,5 +1,5 @@
-import { getDbTable, saveOutput } from './utils.mjs';
 import { AGENCY_COLORS } from './consts.mjs';
+import { getDbTable, saveOutput } from './utils.mjs';
 
 export default async function getAgencies() {
   const agencies = getDbTable('agency').reduce((obj, agency) => {

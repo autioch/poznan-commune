@@ -1,14 +1,15 @@
 /* eslint-disable no-underscore-dangle */
-import { createRequire } from 'module';
 import fs from 'fs/promises';
-import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
 import { dirname, join } from 'path';
-import { TRAM_TOURIST, BUS_TOURIST, NIGHT_ROUTE } from './consts.mjs';
+import { fileURLToPath } from 'url';
 
-function joinFromCurrentDir(importMeta) {
+import { BUS_TOURIST, NIGHT_ROUTE, TRAM_TOURIST } from './consts.mjs';
+
+function joinFromCurrentDir(importMeta, ...subfolders) {
   const baseDir = dirname(fileURLToPath(importMeta.url));
 
-  return join.bind(null, baseDir);
+  return join.bind(null, baseDir, ...subfolders);
 }
 
 const dbJoin = joinFromCurrentDir(import.meta);

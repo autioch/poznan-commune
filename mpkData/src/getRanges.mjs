@@ -1,8 +1,9 @@
-import { saveOutput, readOutput } from './utils.mjs';
-import spherical from 'spherical';
-import { MPK_AGENCY } from './consts.mjs';
-import union from '@turf/union';
 import turf from '@turf/turf';
+import union from '@turf/union';
+import spherical from 'spherical';
+
+import { MPK_AGENCY } from './consts.mjs';
+import { readOutput, saveOutput } from './utils.mjs';
 
 const ARCS = 18;
 const ANGLES = new Array(ARCS + 1).fill(null).map((_, i) => (i / ARCS) * 360); // eslint-disable-line no-unused-vars

@@ -1,8 +1,8 @@
 import getAgencies from './getAgencies.mjs';
 import getBoundaries from './getBoundaries.mjs';
-import getStops from './getStops.mjs';
-import getRouteLines from './getRouteLines.mjs';
 import getRanges from './getRanges.mjs';
+import getRouteLines from './getRouteLines.mjs';
+import getStops from './getStops.mjs';
 
 (async () => {
   console.log('agencies');

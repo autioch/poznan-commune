@@ -11,10 +11,20 @@ module.exports = {
     'no-return-assign': ['off'],
     'camelcase': ['off'],
     'no-console': ['off'],
+
+    'simple-import-sort/imports': ['warn', {
+      groups: [
+        ["^[^.]"], // node modules, global imports
+        ["^\\."],  // local imports
+        ["^"]      // any other imports (e.g. './styles')
+      ]
+    }],
+    'simple-import-sort/exports': ['off']
   },
   env: {
     node: true
   },
+  plugins: ['simple-import-sort'],
   parserOptions: {
     sourceType: 'module',
     impliedStrict: true

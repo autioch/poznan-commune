@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
-import { getDbTable, saveOutput, isDailyRoute } from './utils.mjs';
-import { TRAM_ROUTE, BUS_ROUTE, MPK_AGENCY } from './consts.mjs';
+import { BUS_ROUTE, MPK_AGENCY, TRAM_ROUTE } from './consts.mjs';
+import { getDbTable, isDailyRoute, saveOutput } from './utils.mjs';
 
 const sortPoints = ([a], [b]) => a - b;
 
