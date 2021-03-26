@@ -17,9 +17,8 @@ async function prepareWebData(fileName, mappingFn, tableNames, outputNames = [])
 
 (async () => {
   await prepareWebData('agencies', mapAgencies, ['agency']);
-
-  // await prepareWebData('stops', mapStops, ['stops', 'stop_times', 'routes', 'trips']);
-  // await prepareWebData('routeLines', mapRouteLines, ['shapes', 'routes', 'trips']);
-  // await prepareWebData('boundaries', mapBoundaries, [], ['stops']);
-  // await prepareWebData('ranges', mapRanges, [], ['stops']);
+  await prepareWebData('stops', mapStops, ['stops', 'stop_times', 'routes', 'trips']);
+  await prepareWebData('routeLines', mapRouteLines, ['shapes', 'routes', 'trips']);
+  await prepareWebData('boundaries', mapBoundaries, [], ['stops']);
+  await prepareWebData('ranges', mapRanges, [], ['stops']);
 })();

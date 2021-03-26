@@ -15,15 +15,17 @@ export function mapAgencies(agencies) {
   }]));
 }
 
-export function mapStops(stops, stopTimes, routes, trips) {
+export function mapStops(stops, stopTimes, routes, trips) { // eslint-disable-line max-statements
   console.timeLog('stops', 'start');
   const routeMap = new Map(routes.map((route) => [route.route_id, route]));
-  const busRouteIds = new Set(routes.filter((route) => route.route_type === BUS_ROUTE).map(({ route_id }) => route_id));
+  const mpkBusRouteIds = new Set(routes.filter((route) => route.route_type === BUS_ROUTE && routeMap.get(route.route_id).agency_id === MPK_AGENCY).map(({ route_id }) => route_id));
+  const otherBusRouteIds = new Set(routes.filter((route) => route.route_type === BUS_ROUTE && routeMap.get(route.route_id).agency_id !== MPK_AGENCY).map(({ route_id }) => route_id));
   const tramRouteIds = new Set(routes.filter((route) => route.route_type === TRAM_ROUTE).map(({ route_id }) => route_id));
   const tripMap = new Map(trips.map((trip) => [trip.trip_id, trip]));
   const getRouteId = ({ trip_id }) => tripMap.get(trip_id).route_id;
   const getAgencyId = (routeId) => routeMap.get(routeId).agency_id;
-  const isBusRoute = (routeId) => busRouteIds.has(routeId);
+  const isMpkBusRoute = (routeId) => mpkBusRouteIds.has(routeId);
+  const isOtherBusRoute = (routeId) => otherBusRouteIds.has(routeId);
   const isTramRoute = (routeId) => tramRouteIds.has(routeId);
 
   console.timeLog('stops', 'setup');
@@ -45,7 +47,8 @@ export function mapStops(stops, stopTimes, routes, trips) {
     zoneId: zone_id,
     routeIds,
     agencyIds: [...new Set(routeIds.map(getAgencyId))],
-    isForBus: routeIds.some(isBusRoute),
+    isForMpkBus: routeIds.some(isMpkBusRoute),
+    isForOtherBus: routeIds.some(isOtherBusRoute),
     isForTram: routeIds.some(isTramRoute)
   }));
 

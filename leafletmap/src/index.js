@@ -2,18 +2,21 @@ import './styles';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet/dist/images/marker-shadow.png';
 import setupMap from './setupMap';
+import 'leaflet';
+import 'leaflet-groupedlayercontrol';
 
-import renderRanges from './renderRanges';
-import renderStopCircles from './renderStopCircles';
-import renderRouteLines from './renderRouteLines';
-
-// import renderStopMarkers from './renderStopMarkers';
+import overlays from './overlays';
 
 const mapInstance = setupMap();
 
-renderRanges(mapInstance);
+// L.control.layers({}, {
+//   ...overlays.rangesOverlays(),
+//   ...overlays.routeLinesOverlays(),
+//   ...overlays.stopCirclesOverlays()
+// }).addTo(mapInstance);
 
-renderStopCircles(mapInstance);
-renderRouteLines(mapInstance);
+// L.control.layers(overlays.rangesOverlays()).addTo(mapInstance);
+// L.control.layers(overlays.routeLinesOverlays()).addTo(mapInstance);
+// L.control.layers(overlays.stopCirclesOverlays()).addTo(mapInstance);
 
-// renderStopMarkers(mapInstance);
+overlays(mapInstance);
