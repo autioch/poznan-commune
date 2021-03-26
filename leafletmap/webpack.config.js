@@ -41,7 +41,7 @@ module.exports = {
   output: {
     path: buildPath,
     filename: `files/main${nameSuffix}.js`,
-    publicPath: argv.production ? `poznan-commune` : '/',
+    publicPath: argv.production ? '/poznan-commune/' : '/',
     pathinfo: false
   },
   resolve: {
