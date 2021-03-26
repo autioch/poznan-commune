@@ -20,3 +20,13 @@ body {
     margin: 3px 0 !important;
   }
 }
+
+
+#distance {
+  position: absolute;
+  bottom: 20px;
+  left: 1vw;
+  right: 1vw;
+  z-index: 401;
+  background: #f1f1f1;
+}

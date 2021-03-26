@@ -6,17 +6,9 @@ import 'leaflet';
 import 'leaflet-groupedlayercontrol';
 
 import overlays from './overlays';
+import events from './events';
 
 const mapInstance = setupMap();
 
-// L.control.layers({}, {
-//   ...overlays.rangesOverlays(),
-//   ...overlays.routeLinesOverlays(),
-//   ...overlays.stopCirclesOverlays()
-// }).addTo(mapInstance);
-
-// L.control.layers(overlays.rangesOverlays()).addTo(mapInstance);
-// L.control.layers(overlays.routeLinesOverlays()).addTo(mapInstance);
-// L.control.layers(overlays.stopCirclesOverlays()).addTo(mapInstance);
-
 overlays(mapInstance);
+events(mapInstance);
