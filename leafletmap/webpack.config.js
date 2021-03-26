@@ -8,7 +8,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-const packageJson = require('./package.json');
 
 const { argv } = require('yargs').options({
   production: {
@@ -42,7 +41,7 @@ module.exports = {
   output: {
     path: buildPath,
     filename: `files/main${nameSuffix}.js`,
-    publicPath: argv.production ? `/${packageJson.name}` : '/',
+    publicPath: argv.production ? `poznan-commune` : '/',
     pathinfo: false
   },
   resolve: {
