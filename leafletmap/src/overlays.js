@@ -4,11 +4,29 @@ import ranges from './data/ranges.json';
 import routeLines from './data/routeLines.json';
 import agencies from './data/agencies.json';
 import stops from './data/stops.json';
+import lidlShops from './data/lidlShops.json';
+import biedronkaShops from './data/biedronkaShops.json';
 import { TRAM_LINE, BUS_LINE, OTHER_LINE, TRAM_RANGE, BUS_RANGE, OTHER_RANGE, TRAM_STOP, BUS_STOP, OTHER_STOP } from './consts';
+import lidlIconPng from './lidl.png';
+import biedronkaIconPng from './biedronka.png';
 
 const forTram = ({ isForTram }) => isForTram;
 const forMpkBus = ({ isForMpkBus }) => isForMpkBus;
 const forOtherBus = ({ isForOtherBus }) => isForOtherBus;
+
+const lidlIcon = L.icon({
+  iconUrl: lidlIconPng,
+  iconSize: [32, 32],
+  iconAnchor: [16, 32],
+  popupAnchor: [0, -32]
+});
+
+const biedronkaIcon = L.icon({
+  iconUrl: biedronkaIconPng,
+  iconSize: [32, 48],
+  iconAnchor: [16, 32],
+  popupAnchor: [0, -32]
+});
 
 function renderRange(polygon, color) {
   return L.geoJson(polygon, {
@@ -25,6 +43,18 @@ function getStopPopup({ zoneId, stopName, routeIds, agencyIds }) {
     <p>Linie: ${routeIds.join(', ')}</p>
     ${agencyIds.map((agencyId) => `<p>${agencies[agencyId].label.replace('Sp. z o.o.', '').trim()}</p>`).join('')}
   `;
+}
+
+function getShopPopup(shop) {
+  return `<h3>${shop.address}</h3>${shop.openingTimes.map((time) => `<p>${time}</p>`).join('')}`;
+}
+
+function featureLayer(feature, icon, popupFn) {
+  return L.layerGroup(
+    feature.map((item) => L.marker([item.latitude, item.longitude], {
+      icon
+    }).bindPopup(popupFn(item)))
+  );
 }
 
 // eslint-disable-next-line max-params
@@ -72,4 +102,14 @@ export default function overlays(mapInstance) {
   typeGroupLayer(mapInstance, forTram, 'Tram', TRAM_LINE, TRAM_STOP, TRAM_RANGE, 'trams');
   typeGroupLayer(mapInstance, forMpkBus, 'MPK Bus', BUS_LINE, BUS_STOP, BUS_RANGE, 'mpkBuses');
   typeGroupLayer(mapInstance, forOtherBus, 'Other Bus', OTHER_LINE, OTHER_STOP, OTHER_RANGE, 'otherBuses');
+
+  L.control
+    .layers(
+      {},
+      {
+        Lidl: featureLayer(lidlShops, lidlIcon, getShopPopup),
+        Biedronka: featureLayer(biedronkaShops, biedronkaIcon, getShopPopup)
+      }
+    )
+    .addTo(mapInstance);
 }

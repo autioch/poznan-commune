@@ -11,3 +11,6 @@ export const BUS_LINE = '#FA0';
 export const OTHER_RANGE = '#333';
 export const OTHER_STOP = '#333';
 export const OTHER_LINE = '#333';
+
+export const LIDL = '#0050AA';
+export const BIEDRONKA = '#E30713';

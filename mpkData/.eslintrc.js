@@ -11,6 +11,7 @@ module.exports = {
     'no-return-assign': ['off'],
     'camelcase': ['off'],
     'no-console': ['off'],
+    'newline-per-chained-call': ['off'],
 
     'simple-import-sort/imports': ['warn', {
       groups: [

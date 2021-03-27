@@ -4,7 +4,9 @@
   "description": "",
   "scripts": {
     "update-db": "node ./src/updatedb.mjs",
-    "update-web": "node ./src/updateweb.mjs"
+    "update-web": "node ./src/updateweb.mjs",
+    "update-lidl": "node ./src/lidl/index.mjs",
+    "update-biedronka": "node ./src/biedronka/index.mjs"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,7 @@
     "@turf/union": "^6.0.3",
     "babel-eslint": "10.0.3",
     "chai": "4.0.2",
+    "cheerio": "^1.0.0-rc.5",
     "csv-parser": "^2.3.3",
     "csv-writer": "^1.6.0",
     "eslint": "4.8.0",
