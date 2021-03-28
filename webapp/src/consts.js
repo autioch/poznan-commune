@@ -16,3 +16,4 @@ export const LIDL = '#0050AA';
 export const BIEDRONKA = '#E30713';
 export const INPOST = '#000000';
 export const ZABKA = '#01672C';
+export const PHARMACY = '#007F0E';

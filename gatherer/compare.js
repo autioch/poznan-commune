@@ -2,8 +2,8 @@ const fs = require('fs');
 const { join } = require('path');
 
 const versions = [
-  require('../../leafletmap/src/data/lidlShops.json'),
-  require('../../leafletmap/src/data/lidlShops.old.json')
+  require('../../webapp/src/data/lidlShops.json'),
+  require('../../webapp/src/data/lidlShops.old.json')
 ];
 
 versions.forEach((version, index) => {

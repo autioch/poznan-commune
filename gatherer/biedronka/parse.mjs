@@ -60,6 +60,8 @@ async function geoLocateShop(shop) {
 
   await Promise.all(geocodeReqs);
 
+  shopList.sort((a, b) => a.id.localeCompare(b.id));
+
   console.log(`Found ${shopList.length} Biedronka shops.`);
 
   saveOutput('biedronkaShops', shopList, true);

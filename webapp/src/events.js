@@ -4,8 +4,9 @@ import lidlShops from './data/lidlShops.json';
 import biedronkaShops from './data/biedronkaShops.json';
 import zabkaShops from './data/zabkaShops.json';
 import inposts from './data/inposts.json';
+import pharmacies from './data/pharmacies.json';
 import { haversine1 } from './haversine';
-import { TRAM_LINE, BUS_LINE, LIDL, BIEDRONKA, INPOST, ZABKA } from './consts';
+import { TRAM_LINE, BUS_LINE, LIDL, BIEDRONKA, INPOST, ZABKA, PHARMACY } from './consts';
 import markerIconPng from './smile.png';
 
 const tramStops = stops.filter(({ isForTram }) => isForTram);
@@ -54,6 +55,8 @@ let zabkaPolyline;
 
 let inpostPolyline;
 
+let pharmacyPolyline;
+
 let closeEl;
 
 let innerMapInstance;
@@ -79,6 +82,9 @@ function removeDistances(mapInstance) {
   }
   if (inpostPolyline) {
     mapInstance.removeLayer(inpostPolyline);
+  }
+  if (pharmacyPolyline) {
+    mapInstance.removeLayer(pharmacyPolyline);
   }
 }
 
@@ -109,6 +115,7 @@ export default function events(mapInstance) {
     const closestBiedronkas = findClosest(latlng, biedronkaShops).slice(0, 2);
     const closestZabkas = findClosest(latlng, zabkaShops).slice(0, 2);
     const closestInposts = findClosest(latlng, inposts).slice(0, 2);
+    const closestPharmacies = findClosest(latlng, pharmacies).slice(0, 2);
 
     tramPolyline = L.polyline([
       closestTramStops.map((stp) => [latlng, stopLatLng(stp)])
@@ -152,12 +159,20 @@ export default function events(mapInstance) {
       color: INPOST
     });
 
+    pharmacyPolyline = L.polyline([
+      closestPharmacies.map((stp) => [latlng, stopLatLng(stp)])
+    ], {
+      weight: 2,
+      color: PHARMACY
+    });
+
     mapInstance.addLayer(tramPolyline);
     mapInstance.addLayer(busPolyline);
     mapInstance.addLayer(lidlPolyline);
     mapInstance.addLayer(biedronkaPolyline);
     mapInstance.addLayer(zabkaPolyline);
     mapInstance.addLayer(inpostPolyline);
+    mapInstance.addLayer(pharmacyPolyline);
 
     window.distance.innerHTML = `
       <div>Closest tram stops:</div>
@@ -183,6 +198,10 @@ export default function events(mapInstance) {
       <div>Closest inposts:</div>
       <ol>
         ${closestInposts.map(shopInfo).join('')}
+      </ol>
+      <div>Closest pharmacies:</div>
+      <ol>
+        ${closestPharmacies.map(shopInfo).join('')}
       </ol>
     `;
 

@@ -8,11 +8,13 @@ import lidlShops from './data/lidlShops.json';
 import biedronkaShops from './data/biedronkaShops.json';
 import zabkaShops from './data/zabkaShops.json';
 import inposts from './data/inposts.json';
+import pharmacies from './data/pharmacies.json';
 import { TRAM_LINE, BUS_LINE, OTHER_LINE, TRAM_RANGE, BUS_RANGE, OTHER_RANGE, TRAM_STOP, BUS_STOP, OTHER_STOP } from './consts';
 import lidlIconPng from './lidl.png';
 import biedronkaIconPng from './biedronka.png';
 import zabkaIconPng from './zabka.png';
 import inpostIconPng from './inpost.png';
+import pharmacytIconPng from './pharmacy.png';
 
 const forTram = ({ isForTram }) => isForTram;
 const forMpkBus = ({ isForMpkBus }) => isForMpkBus;
@@ -43,6 +45,13 @@ const inpostIcon = L.icon({
   iconUrl: inpostIconPng,
   iconSize: [36, 24],
   iconAnchor: [18, 12],
+  popupAnchor: [0, -12]
+});
+
+const pharmacyIcon = L.icon({
+  iconUrl: pharmacytIconPng,
+  iconSize: [24, 24],
+  iconAnchor: [12, 12],
   popupAnchor: [0, -12]
 });
 
@@ -126,6 +135,7 @@ export default function overlays(mapInstance) {
       {},
       {
         Lidl: featureLayer(lidlShops, lidlIcon, getShopPopup),
+        Apteka: featureLayer(pharmacies, pharmacyIcon, getShopPopup),
         Biedronka: featureLayer(biedronkaShops, biedronkaIcon, getShopPopup),
         Zabka: featureLayer(zabkaShops, zabkaIcon, getShopPopup),
         Inpost: featureLayer(inposts, inpostIcon, getShopPopup)

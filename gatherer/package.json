@@ -9,6 +9,7 @@
     "gather:inpost": "node ./inpost/gather.mjs",
     "gather:lidl": "node ./lidl/gather.mjs",
     "gather:mpk": "node ./mpk/gather.mjs",
+    "gather:pharmacy": "node ./pharmacy/gather.mjs",
     "gather:zabka": "node ./zabka/gather.mjs",
 
     "parse": "node ./parse.mjs",
@@ -16,8 +17,9 @@
     "parse:inpost": "node ./inpost/parse.mjs",
     "parse:lidl": "node ./lidl/parse.mjs",
     "parse:mpk": "node ./mpk/parse.mjs",
+    "parse:pharmacy": "node ./pharmacy/parse.mjs",
     "parse:zabka": "node ./zabka/parse.mjs",
-    
+
     "debug:compare": "node ./debugCompare/index.js"
   },
   "repository": {
