@@ -2,9 +2,10 @@ import L from 'leaflet';
 import stops from './data/stops.json';
 import lidlShops from './data/lidlShops.json';
 import biedronkaShops from './data/biedronkaShops.json';
+import zabkaShops from './data/zabkaShops.json';
 import inposts from './data/inposts.json';
 import { haversine1 } from './haversine';
-import { TRAM_LINE, BUS_LINE, LIDL, BIEDRONKA, INPOST } from './consts';
+import { TRAM_LINE, BUS_LINE, LIDL, BIEDRONKA, INPOST, ZABKA } from './consts';
 import markerIconPng from './smile.png';
 
 const tramStops = stops.filter(({ isForTram }) => isForTram);
@@ -49,6 +50,8 @@ let lidlPolyline;
 
 let biedronkaPolyline;
 
+let zabkaPolyline;
+
 let inpostPolyline;
 
 let closeEl;
@@ -70,6 +73,9 @@ function removeDistances(mapInstance) {
   }
   if (biedronkaPolyline) {
     mapInstance.removeLayer(biedronkaPolyline);
+  }
+  if (zabkaPolyline) {
+    mapInstance.removeLayer(zabkaPolyline);
   }
   if (inpostPolyline) {
     mapInstance.removeLayer(inpostPolyline);
@@ -101,6 +107,7 @@ export default function events(mapInstance) {
     const closestBusStops = findClosest(latlng, busStops);
     const closestLidls = findClosest(latlng, lidlShops).slice(0, 2);
     const closestBiedronkas = findClosest(latlng, biedronkaShops).slice(0, 2);
+    const closestZabkas = findClosest(latlng, zabkaShops).slice(0, 2);
     const closestInposts = findClosest(latlng, inposts).slice(0, 2);
 
     tramPolyline = L.polyline([
@@ -131,6 +138,13 @@ export default function events(mapInstance) {
       color: BIEDRONKA
     });
 
+    zabkaPolyline = L.polyline([
+      closestZabkas.map((stp) => [latlng, stopLatLng(stp)])
+    ], {
+      weight: 2,
+      color: ZABKA
+    });
+
     inpostPolyline = L.polyline([
       closestInposts.map((stp) => [latlng, stopLatLng(stp)])
     ], {
@@ -142,6 +156,7 @@ export default function events(mapInstance) {
     mapInstance.addLayer(busPolyline);
     mapInstance.addLayer(lidlPolyline);
     mapInstance.addLayer(biedronkaPolyline);
+    mapInstance.addLayer(zabkaPolyline);
     mapInstance.addLayer(inpostPolyline);
 
     window.distance.innerHTML = `
@@ -160,6 +175,10 @@ export default function events(mapInstance) {
       <div>Closest Biedronka shops:</div>
       <ol>
         ${closestBiedronkas.map(shopInfo).join('')}
+      </ol>
+      <div>Closest Zabka shops:</div>
+      <ol>
+        ${closestZabkas.map(shopInfo).join('')}
       </ol>
       <div>Closest inposts:</div>
       <ol>

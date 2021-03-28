@@ -68,3 +68,17 @@ export async function forwardGeocode(address, city) {
 
   return results[0].geometry;
 }
+
+const degToRad = (deg) => deg / 180.0 * Math.PI;
+const EARTH_RADIUS_KM = 6372.8; // km, optionally 6367, 6378.1370
+const POZNAN_CENTER_LAT = degToRad(52.409538);
+const POZNAN_CENTER_LNG = degToRad(16.931992);
+const sqrSinHalf = (val) => Math.sin(val / 2) * Math.sin(val / 2);
+
+export function isAtMost25kmFromPoznanCenter(lat, lng) { // haversine
+  const latRad = degToRad(lat);
+  const halfLapsAroundGlobe = sqrSinHalf(POZNAN_CENTER_LAT - latRad) + (sqrSinHalf(POZNAN_CENTER_LNG - degToRad(lng)) * Math.cos(latRad) * Math.cos(POZNAN_CENTER_LAT));
+  const c = 2 * Math.asin(Math.sqrt(halfLapsAroundGlobe));
+
+  return EARTH_RADIUS_KM * c < 25;
+}
