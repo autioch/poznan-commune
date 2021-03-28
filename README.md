@@ -12,7 +12,6 @@ Add:
 - szkoły podstawowe
 - galerie handlowe
 - place zabaw
-- paczkomaty
 
 
 ## Resources

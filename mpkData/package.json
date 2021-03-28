@@ -14,7 +14,8 @@
     "parse:biedronka": "node ./biedronka/parse.mjs",
     "parse:inpost": "node ./inpost/parse.mjs",
     "parse:lidl": "node ./lidl/parse.mjs",
-    "parse:mpk": "node ./mpk/parse.mjs"
+    "parse:mpk": "node ./mpk/parse.mjs",
+    "debug:compare": "node ./debugCompare/index.js"
   },
   "repository": {
     "type": "git",
