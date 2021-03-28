@@ -1,12 +1,20 @@
 {
   "name": "poznan-tram",
   "version": "1.0.0",
+  "private": true,
   "description": "",
   "scripts": {
-    "update-db": "node ./src/updatedb.mjs",
-    "update-web": "node ./src/updateweb.mjs",
-    "update-lidl": "node ./src/lidl/index.mjs",
-    "update-biedronka": "node ./src/biedronka/index.mjs"
+    "gather": "node ./gather.mjs",
+    "gather:biedronka": "node ./biedronka/gather.mjs",
+    "gather:inpost": "node ./inpost/gather.mjs",
+    "gather:lidl": "node ./lidl/gather.mjs",
+    "gather:mpk": "node ./mpk/gather.mjs",
+
+    "parse": "node ./parse.mjs",
+    "parse:biedronka": "node ./biedronka/parse.mjs",
+    "parse:inpost": "node ./inpost/parse.mjs",
+    "parse:lidl": "node ./lidl/parse.mjs",
+    "parse:mpk": "node ./mpk/parse.mjs"
   },
   "repository": {
     "type": "git",

@@ -1,9 +1,11 @@
 import cheerio from 'cheerio';
+import fs from 'fs/promises';
 
-import forwardGeocode from '../forwardGeocode.mjs';
-import { getPage, saveOutput } from '../utils.mjs'; // eslint-disable-line no-shadow
+// import { createRequire } from 'module';
+import { forwardGeocode, joinFromCurrentDir, saveOutput } from '../utils.mjs'; // eslint-disable-line no-shadow
 
-const PAGE_COUNT = 4;
+// const require = createRequire(import.meta.url); // eslint-disable-line no-shadow
+const join = joinFromCurrentDir(import.meta, 'db');
 
 const ID_REGEX = / a href="\/pl\/shop,id,(\d+),title,.+" class="showShopOnMap">Zobacz więcej<\/a /;
 
@@ -49,16 +51,16 @@ async function geoLocateShop(shop) {
 }
 
 (async () => {
-  const reqs = new Array(PAGE_COUNT).fill(null).map((el, i) => getPage(`https://www.biedronka.pl/pl/sklepy/lista,city,poznan,page,${i + 1}`)); // eslint-disable-line no-unused-vars
+  const fileNames = await fs.readdir(join());
+  const tablePromises = fileNames.map((fileName) => fs.readFile(join(fileName), 'utf8'));
 
-  const htmls = await Promise.all(reqs);
+  const htmls = await Promise.all(tablePromises);
   const shopList = htmls.flatMap(getShopList);
-
-  console.log(`Found ${shopList.length} Biedronka shops.`);
-
   const geocodeReqs = shopList.map(geoLocateShop);
 
   await Promise.all(geocodeReqs);
+
+  console.log(`Found ${shopList.length} Biedronka shops.`);
 
   saveOutput('biedronkaShops', shopList, true);
 })();

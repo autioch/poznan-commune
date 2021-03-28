@@ -1,3 +1,4 @@
-db/*.json
-db/*.txt
-db/ZTMPoznanGTFS.zip
+*/db/*.json
+*/db/*.txt
+*/db/*.html
+*/db/ZTMPoznanGTFS.zip

@@ -2,8 +2,9 @@ import turf from '@turf/turf';
 import union from '@turf/union';
 import spherical from 'spherical';
 
-import { AGENCY_COLORS, BUS_ROUTE, MPK_AGENCY, TRAM_ROUTE } from './consts.mjs';
-import { isDailyRoute } from './utils.mjs';
+import { AGENCY_COLORS, BUS_ROUTE, BUS_TOURIST, MPK_AGENCY, NIGHT_ROUTE, TRAM_ROUTE, TRAM_TOURIST } from './consts.mjs';
+
+const isDailyRoute = (routeId) => routeId !== TRAM_TOURIST && routeId !== BUS_TOURIST && !NIGHT_ROUTE.test(routeId);
 
 export function mapAgencies(agencies) {
   return Object.fromEntries(agencies.map((agency) => [agency['\ufeffagency_id'], {
