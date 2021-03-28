@@ -6,9 +6,11 @@ import agencies from './data/agencies.json';
 import stops from './data/stops.json';
 import lidlShops from './data/lidlShops.json';
 import biedronkaShops from './data/biedronkaShops.json';
+import inposts from './data/inposts.json';
 import { TRAM_LINE, BUS_LINE, OTHER_LINE, TRAM_RANGE, BUS_RANGE, OTHER_RANGE, TRAM_STOP, BUS_STOP, OTHER_STOP } from './consts';
 import lidlIconPng from './lidl.png';
 import biedronkaIconPng from './biedronka.png';
+import inpostIconPng from './inpost.png';
 
 const forTram = ({ isForTram }) => isForTram;
 const forMpkBus = ({ isForMpkBus }) => isForMpkBus;
@@ -26,6 +28,13 @@ const biedronkaIcon = L.icon({
   iconSize: [32, 48],
   iconAnchor: [16, 32],
   popupAnchor: [0, -32]
+});
+
+const inpostIcon = L.icon({
+  iconUrl: inpostIconPng,
+  iconSize: [36, 24],
+  iconAnchor: [18, 12],
+  popupAnchor: [0, -12]
 });
 
 function renderRange(polygon, color) {
@@ -108,7 +117,8 @@ export default function overlays(mapInstance) {
       {},
       {
         Lidl: featureLayer(lidlShops, lidlIcon, getShopPopup),
-        Biedronka: featureLayer(biedronkaShops, biedronkaIcon, getShopPopup)
+        Biedronka: featureLayer(biedronkaShops, biedronkaIcon, getShopPopup),
+        Inpost: featureLayer(inposts, inpostIcon, getShopPopup)
       }
     )
     .addTo(mapInstance);

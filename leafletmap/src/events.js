@@ -2,8 +2,9 @@ import L from 'leaflet';
 import stops from './data/stops.json';
 import lidlShops from './data/lidlShops.json';
 import biedronkaShops from './data/biedronkaShops.json';
+import inposts from './data/inposts.json';
 import { haversine1 } from './haversine';
-import { TRAM_LINE, BUS_LINE, LIDL, BIEDRONKA } from './consts';
+import { TRAM_LINE, BUS_LINE, LIDL, BIEDRONKA, INPOST } from './consts';
 import markerIconPng from './smile.png';
 
 const tramStops = stops.filter(({ isForTram }) => isForTram);
@@ -48,6 +49,8 @@ let lidlPolyline;
 
 let biedronkaPolyline;
 
+let inpostPolyline;
+
 let closeEl;
 
 let innerMapInstance;
@@ -67,6 +70,9 @@ function removeDistances(mapInstance) {
   }
   if (biedronkaPolyline) {
     mapInstance.removeLayer(biedronkaPolyline);
+  }
+  if (inpostPolyline) {
+    mapInstance.removeLayer(inpostPolyline);
   }
 }
 
@@ -95,6 +101,7 @@ export default function events(mapInstance) {
     const closestBusStops = findClosest(latlng, busStops);
     const closestLidls = findClosest(latlng, lidlShops).slice(0, 2);
     const closestBiedronkas = findClosest(latlng, biedronkaShops).slice(0, 2);
+    const closestInposts = findClosest(latlng, inposts).slice(0, 2);
 
     tramPolyline = L.polyline([
       closestTramStops.map((stp) => [latlng, stopLatLng(stp)])
@@ -124,10 +131,18 @@ export default function events(mapInstance) {
       color: BIEDRONKA
     });
 
+    inpostPolyline = L.polyline([
+      closestInposts.map((stp) => [latlng, stopLatLng(stp)])
+    ], {
+      weight: 2,
+      color: INPOST
+    });
+
     mapInstance.addLayer(tramPolyline);
     mapInstance.addLayer(busPolyline);
     mapInstance.addLayer(lidlPolyline);
     mapInstance.addLayer(biedronkaPolyline);
+    mapInstance.addLayer(inpostPolyline);
 
     window.distance.innerHTML = `
       <div>Closest tram stops:</div>
@@ -145,6 +160,10 @@ export default function events(mapInstance) {
       <div>Closest Biedronka shops:</div>
       <ol>
         ${closestBiedronkas.map(shopInfo).join('')}
+      </ol>
+      <div>Closest inposts:</div>
+      <ol>
+        ${closestInposts.map(shopInfo).join('')}
       </ol>
     `;
 

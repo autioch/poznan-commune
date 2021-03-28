@@ -14,3 +14,4 @@ export const OTHER_LINE = '#333';
 
 export const LIDL = '#0050AA';
 export const BIEDRONKA = '#E30713';
+export const INPOST = '#000000';
