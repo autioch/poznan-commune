@@ -1,5 +1,17 @@
 [
   {
+    "id": "1816",
+    "longitude": 16.91661,
+    "latitude": 52.42535,
+    "locality": "Poznań",
+    "address": "ul. Piątkowska",
+    "openingTimes": [
+      "Pon. - Czw: 06:00 - 22:00",
+      "Pt. - Sob.: 06:00 - 22:00",
+      "Ndz. handlowe: 09:00 - 20:00"
+    ]
+  },
+  {
     "id": "1907",
     "longitude": 16.92123,
     "latitude": 52.44489,
@@ -24,26 +36,14 @@
     ]
   },
   {
-    "id": "1262",
-    "longitude": 16.90744,
-    "latitude": 52.46003,
+    "id": "1884",
+    "longitude": 16.90726,
+    "latitude": 52.41565,
     "locality": "Poznań",
-    "address": "ul. Szymanowskiego 13",
+    "address": "ul. Kościelna 40",
     "openingTimes": [
       "Pon. - Sob.: 06:00 - 22:00",
-      "Ndz. handlowe: 09:00 - 20:00"
-    ]
-  },
-  {
-    "id": "1816",
-    "longitude": 16.91661,
-    "latitude": 52.42535,
-    "locality": "Poznań",
-    "address": "ul. Piątkowska",
-    "openingTimes": [
-      "Pon. - Czw: 06:00 - 22:00",
-      "Pt. - Sob.: 06:00 - 22:00",
-      "Ndz. handlowe: 09:00 - 20:00"
+      "Ndz. handlowe: 09:00 - 19:00"
     ]
   },
   {
@@ -52,29 +52,6 @@
     "latitude": 52.44306,
     "locality": "Poznań",
     "address": "Naramowicka 142",
-    "openingTimes": [
-      "Pon. - Sob.: 06:00 - 22:00",
-      "Ndz. handlowe: 09:00 - 19:00"
-    ]
-  },
-  {
-    "id": "1668",
-    "longitude": 16.8833,
-    "latitude": 52.4604,
-    "locality": "Poznań",
-    "address": "ul. Szarych Szeregów 42",
-    "openingTimes": [
-      "Pon. - Czw: 06:00 - 22:00",
-      "Pt. - Sob.: 06:00 - 22:00",
-      "Ndz. handlowe: 09:00 - 19:00"
-    ]
-  },
-  {
-    "id": "1884",
-    "longitude": 16.90726,
-    "latitude": 52.41565,
-    "locality": "Poznań",
-    "address": "ul. Kościelna 40",
     "openingTimes": [
       "Pon. - Sob.: 06:00 - 22:00",
       "Ndz. handlowe: 09:00 - 19:00"
@@ -103,6 +80,17 @@
     ]
   },
   {
+    "id": "1262",
+    "longitude": 16.90744,
+    "latitude": 52.46003,
+    "locality": "Poznań",
+    "address": "ul. Szymanowskiego 13",
+    "openingTimes": [
+      "Pon. - Sob.: 06:00 - 22:00",
+      "Ndz. handlowe: 09:00 - 20:00"
+    ]
+  },
+  {
     "id": "1708",
     "longitude": 16.92821,
     "latitude": 52.40639,
@@ -115,6 +103,18 @@
     ]
   },
   {
+    "id": "1668",
+    "longitude": 16.8833,
+    "latitude": 52.4604,
+    "locality": "Poznań",
+    "address": "ul. Szarych Szeregów 42",
+    "openingTimes": [
+      "Pon. - Czw: 06:00 - 22:00",
+      "Pt. - Sob.: 06:00 - 22:00",
+      "Ndz. handlowe: 09:00 - 19:00"
+    ]
+  },
+  {
     "id": "1479",
     "longitude": 16.96873,
     "latitude": 52.42006,
@@ -123,29 +123,6 @@
     "openingTimes": [
       "Pon. - Sob.: 06:00 - 22:00",
       "Ndz. handlowe: 09:00 - 20:00"
-    ]
-  },
-  {
-    "id": "1809",
-    "longitude": 16.98561,
-    "latitude": 52.45302,
-    "locality": "Koziegłowy",
-    "address": "ul. Gdyńska 66",
-    "openingTimes": [
-      "Pon. - Czw: 06:00 - 22:00",
-      "Pt. - Sob.: 06:00 - 22:00",
-      "Ndz. handlowe: 09:00 - 19:00"
-    ]
-  },
-  {
-    "id": "1704",
-    "longitude": 16.86929,
-    "latitude": 52.47788,
-    "locality": "Suchy Las",
-    "address": "ul. Obornicka 127",
-    "openingTimes": [
-      "Pon. - Sob.: 06:00 - 22:00",
-      "Ndz. handlowe: 09:00 - 19:00"
     ]
   },
   {
@@ -171,13 +148,14 @@
     ]
   },
   {
-    "id": "1754",
-    "longitude": 16.82497,
-    "latitude": 52.43122,
-    "locality": "Poznań",
-    "address": "ul. Wejherowska 4",
+    "id": "1809",
+    "longitude": 16.98561,
+    "latitude": 52.45302,
+    "locality": "Koziegłowy",
+    "address": "ul. Gdyńska 66",
     "openingTimes": [
-      "Pon. - Sob.: 06:00 - 22:00",
+      "Pon. - Czw: 06:00 - 22:00",
+      "Pt. - Sob.: 06:00 - 22:00",
       "Ndz. handlowe: 09:00 - 19:00"
     ]
   },
@@ -215,6 +193,17 @@
     ]
   },
   {
+    "id": "1704",
+    "longitude": 16.86929,
+    "latitude": 52.47788,
+    "locality": "Suchy Las",
+    "address": "ul. Obornicka 127",
+    "openingTimes": [
+      "Pon. - Sob.: 06:00 - 22:00",
+      "Ndz. handlowe: 09:00 - 19:00"
+    ]
+  },
+  {
     "id": "1764",
     "longitude": 16.96078,
     "latitude": 52.38621,
@@ -223,6 +212,28 @@
     "openingTimes": [
       "Pon. - Czw: 06:00 - 22:00",
       "Pt. - Sob.: 06:00 - 22:00",
+      "Ndz. handlowe: 09:00 - 19:00"
+    ]
+  },
+  {
+    "id": "1754",
+    "longitude": 16.82497,
+    "latitude": 52.43122,
+    "locality": "Poznań",
+    "address": "ul. Wejherowska 4",
+    "openingTimes": [
+      "Pon. - Sob.: 06:00 - 22:00",
+      "Ndz. handlowe: 09:00 - 19:00"
+    ]
+  },
+  {
+    "id": "1020",
+    "longitude": 16.87546,
+    "latitude": 52.37825,
+    "locality": "Poznań",
+    "address": "ul. Glogowska 228-234",
+    "openingTimes": [
+      "Pon. - Sob.: 06:00 - 22:00",
       "Ndz. handlowe: 09:00 - 19:00"
     ]
   },
@@ -239,28 +250,6 @@
     ]
   },
   {
-    "id": "1020",
-    "longitude": 16.87546,
-    "latitude": 52.37825,
-    "locality": "Poznań",
-    "address": "ul. Glogowska 228-234",
-    "openingTimes": [
-      "Pon. - Sob.: 06:00 - 22:00",
-      "Ndz. handlowe: 09:00 - 19:00"
-    ]
-  },
-  {
-    "id": "1773",
-    "longitude": 16.99419,
-    "latitude": 52.39267,
-    "locality": "Poznań",
-    "address": "Abp. Dymka",
-    "openingTimes": [
-      "Pon. - Sob.: 06:00 - 22:00",
-      "Ndz. handlowe: 09:00 - 19:00"
-    ]
-  },
-  {
     "id": "1012",
     "longitude": 16.97352,
     "latitude": 52.38184,
@@ -272,15 +261,14 @@
     ]
   },
   {
-    "id": "1761",
-    "longitude": 16.80084,
-    "latitude": 52.39631,
-    "locality": "Skórzewo",
-    "address": "ul. Poznańska 100",
+    "id": "1773",
+    "longitude": 16.99419,
+    "latitude": 52.39267,
+    "locality": "Poznań",
+    "address": "Abp. Dymka",
     "openingTimes": [
-      "Pon. - Czw: 06:00 - 22:00",
-      "Pt. - Sob.: 06:00 - 22:00",
-      "Ndz. handlowe: 09:00 - 20:00"
+      "Pon. - Sob.: 06:00 - 22:00",
+      "Ndz. handlowe: 09:00 - 19:00"
     ]
   },
   {
@@ -305,6 +293,18 @@
       "Pon. - Czw: 06:00 - 22:00",
       "Pt. - Sob.: 06:00 - 22:00",
       "Ndz. handlowe: 09:00 - 19:00"
+    ]
+  },
+  {
+    "id": "1761",
+    "longitude": 16.80084,
+    "latitude": 52.39631,
+    "locality": "Skórzewo",
+    "address": "ul. Poznańska 100",
+    "openingTimes": [
+      "Pon. - Czw: 06:00 - 22:00",
+      "Pt. - Sob.: 06:00 - 22:00",
+      "Ndz. handlowe: 09:00 - 20:00"
     ]
   },
   {
@@ -399,6 +399,17 @@
     ]
   },
   {
+    "id": "1589",
+    "longitude": 17.08302,
+    "latitude": 52.2525,
+    "locality": "Kórnik",
+    "address": "Poznańska 52",
+    "openingTimes": [
+      "Pon. - Sob.: 06:00 - 22:00",
+      "Ndz. handlowe: 09:00 - 19:00"
+    ]
+  },
+  {
     "id": "1340",
     "longitude": 16.81612,
     "latitude": 52.64611,
@@ -407,17 +418,6 @@
     "openingTimes": [
       "Pon. - Czw.: 06:00 - 22:00",
       "Pt. - Sob.: 06:00 - 22:00",
-      "Ndz. handlowe: 09:00 - 19:00"
-    ]
-  },
-  {
-    "id": "1589",
-    "longitude": 17.08302,
-    "latitude": 52.2525,
-    "locality": "Kórnik",
-    "address": "Poznańska 52",
-    "openingTimes": [
-      "Pon. - Sob.: 06:00 - 22:00",
       "Ndz. handlowe: 09:00 - 19:00"
     ]
   },
@@ -490,17 +490,6 @@
     ]
   },
   {
-    "id": "1444",
-    "longitude": 16.37962,
-    "latitude": 52.70917,
-    "locality": "Wronki",
-    "address": "Chrobrego 7",
-    "openingTimes": [
-      "Pon. - Sob.: 08:00 - 20:00",
-      "Ndz. handlowe: 09:00 - 19:00"
-    ]
-  },
-  {
     "id": "1141",
     "longitude": 17.58124,
     "latitude": 52.31754,
@@ -510,6 +499,17 @@
       "Pon. - Czw.: 06:00 - 22:00",
       "Pt. - Sob.: 06:00 - 22:00",
       "Ndz. handlowe: 09:00 - 19:30"
+    ]
+  },
+  {
+    "id": "1444",
+    "longitude": 16.37962,
+    "latitude": 52.70917,
+    "locality": "Wronki",
+    "address": "Chrobrego 7",
+    "openingTimes": [
+      "Pon. - Sob.: 08:00 - 20:00",
+      "Ndz. handlowe: 09:00 - 19:00"
     ]
   },
   {
