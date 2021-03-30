@@ -1,7 +1,9 @@
 /* eslint-disable max-len */
 import L from 'leaflet';
-import boundaries from './data/boundaries.json';
 import debounce from 'lodash.debounce';
+
+import boundaries from './data/boundaries.json';
+import showClosest from './showClosest';
 
 const mapbox = `https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw`;
 const maxZoom = 18;
@@ -59,6 +61,7 @@ export default function setupMap() {
 
   mapInstance.on('zoomend', saveLatLngZoom);
   mapInstance.on('moveend', saveLatLngZoom);
+  mapInstance.on('click', (ev) => showClosest(mapInstance, [ev.latlng.lat, ev.latlng.lng]));
 
   return mapInstance;
 }
