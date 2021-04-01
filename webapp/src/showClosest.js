@@ -56,7 +56,7 @@ function showInfo(mapInstance) {
     .map((source) => `<div>${source.label}</div><ol>${source.closest.map(shopInfo).join('')}</ol>`)
     .join('');
 
-  window.distance.innerHTML = [...communeHtml, ...shopsHtml];
+  window.distance.innerHTML = communeHtml + shopsHtml;
 
   closeEl = document.createElement('div');
 

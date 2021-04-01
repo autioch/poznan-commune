@@ -35,7 +35,7 @@ body {
 
 .distance-close {
   position: absolute;
-  top: 0;
+  bottom: 0;
   right: 0;
   display: flex;
   align-items: center;
@@ -43,4 +43,20 @@ body {
   background: #fff;
   width: 2em;
   height: 2em;
+}
+
+.test-example {
+  width: 32px;
+  height: 32px;
+}
+
+.svg-test {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+}
+
+.svg-test-svg {
+  background: rgba(0,255,0,.5);
 }

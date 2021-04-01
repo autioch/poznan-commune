@@ -45,7 +45,9 @@ const saveLatLngZoom = debounce(({ target }) => {
 }, 1000);
 
 export default function setupMap() {
-  const mapInstance = L.map('map');
+  const mapInstance = L.map('map', {
+    preferCanvas: true
+  });
 
   L
     .tileLayer(mapbox, {

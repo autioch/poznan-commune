@@ -36,14 +36,10 @@ function typeGroupLayer(mapInstance, group) {
           }),
           Stops: L.layerGroup(
             group.items
-              .map((stop) => L.circle([stop.latitude, stop.longitude], { // eslint-disable-line no-shadow
-                radius: 5,
-                color: group.color,
-                weight: 5,
-                opacity: 1,
-                fillColor: group.color,
-                fillOpacity: 0.5
-              }).bindPopup(getStopPopup(stop)))
+              .map((item) => L
+                .marker([item.latitude, item.longitude], { icon: group.icon }) // eslint-disable-line object-curly-newline
+                .bindPopup(getStopPopup(item))
+              )
           )
         },
         [`${group.label} distance`]: {

@@ -12,6 +12,12 @@ import icons from './icons';
 const forTram = ({ isForTram }) => isForTram;
 const forMpkBus = ({ isForMpkBus }) => isForMpkBus;
 const forOtherBus = ({ isForOtherBus }) => isForOtherBus;
+const makeIcon = (img, width, height, type) => L.divIcon({
+  iconUrl: img,
+  iconSize: [width, height],
+  popupAnchor: [0, -Math.ceil(height / 2)],
+  className: `source-${type}`
+});
 
 export const commune = [
   {
@@ -20,7 +26,7 @@ export const commune = [
     items: stops.filter(forTram),
     count: 4,
     color: '#F0F',
-    icon: false,
+    icon: makeIcon(icons.tram, 16, 16, 'tram'),
     rangesKey: 'trams',
     routeLines: routeLines.filter(forTram)
   },
@@ -30,7 +36,7 @@ export const commune = [
     items: stops.filter(forMpkBus),
     count: 4,
     color: '#FA0',
-    icon: false,
+    icon: makeIcon(icons.bus, 16, 16, 'bus'),
     rangesKey: 'mpkBuses',
     routeLines: routeLines.filter(forMpkBus)
   },
@@ -40,7 +46,7 @@ export const commune = [
     items: stops.filter(forOtherBus),
     count: 4,
     color: '#333',
-    icon: false,
+    icon: makeIcon(icons.otherBus, 16, 16, 'otherBus'),
     rangesKey: 'otherBuses',
     routeLines: routeLines.filter(forOtherBus)
   }
@@ -51,65 +57,40 @@ export const shops = [
     id: 'lidl',
     label: 'Lidl',
     items: lidlShops,
-    count: 4,
+    count: 2,
     color: '#0050AA',
-    icon: L.icon({
-      iconUrl: icons.lidl,
-      iconSize: [32, 32],
-      iconAnchor: [16, 32],
-      popupAnchor: [0, -32]
-    })
+    icon: makeIcon(icons.lidl, 32, 32, 'lidl')
   },
   {
     id: 'biedronka',
     label: 'Biedronka',
     items: biedronkaShops,
-    count: 4,
+    count: 2,
     color: '#E30713',
-    icon: L.icon({
-      iconUrl: icons.biedronka,
-      iconSize: [32, 48],
-      iconAnchor: [16, 32],
-      popupAnchor: [0, -32]
-    })
+    icon: makeIcon(icons.biedronka, 32, 48, 'biedronka')
   },
   {
     id: 'zabka',
     label: 'Żabka',
     items: zabkaShops,
-    count: 4,
+    count: 2,
     color: '#01672C',
-    icon: L.icon({
-      iconUrl: icons.zabka,
-      iconSize: [18, 24],
-      iconAnchor: [16, 32],
-      popupAnchor: [0, -32]
-    })
+    icon: makeIcon(icons.zabka, 18, 24, 'zabka')
   },
   {
     id: 'inpost',
     label: 'Inpost',
     items: inposts,
-    count: 4,
+    count: 1,
     color: '#000000',
-    icon: L.icon({
-      iconUrl: icons.inpost,
-      iconSize: [36, 24],
-      iconAnchor: [18, 12],
-      popupAnchor: [0, -12]
-    })
+    icon: makeIcon(icons.inpost, 36, 24, 'inpost')
   },
   {
     id: 'pharmacy',
     label: 'Pharmacy',
     items: pharmacies,
-    count: 4,
+    count: 2,
     color: '#007F0E',
-    icon: L.icon({
-      iconUrl: icons.pharmacy,
-      iconSize: [24, 24],
-      iconAnchor: [12, 12],
-      popupAnchor: [0, -12]
-    })
+    icon: makeIcon(icons.pharmacy, 24, 24, 'pharmacy')
   }
 ];
