@@ -12,11 +12,10 @@ import icons from './icons';
 const forTram = ({ isForTram }) => isForTram;
 const forMpkBus = ({ isForMpkBus }) => isForMpkBus;
 const forOtherBus = ({ isForOtherBus }) => isForOtherBus;
-const makeIcon = (img, width, height, type) => L.divIcon({
+const makeIcon = (img, width, height) => L.icon({
   iconUrl: img,
   iconSize: [width, height],
-  popupAnchor: [0, -Math.ceil(height / 2)],
-  className: `source-${type}`
+  popupAnchor: [0, -Math.ceil(height / 2)]
 });
 
 export const commune = [
@@ -26,9 +25,12 @@ export const commune = [
     items: stops.filter(forTram),
     count: 4,
     color: '#F0F',
+    iconRaw: icons.tram,
     icon: makeIcon(icons.tram, 16, 16, 'tram'),
     rangesKey: 'trams',
-    routeLines: routeLines.filter(forTram)
+    routeLines: routeLines.filter(forTram),
+    isVisible: false,
+    isMeasured: false
   },
   {
     id: 'commune_bus',
@@ -36,9 +38,12 @@ export const commune = [
     items: stops.filter(forMpkBus),
     count: 4,
     color: '#FA0',
+    iconRaw: icons.bus,
     icon: makeIcon(icons.bus, 16, 16, 'bus'),
     rangesKey: 'mpkBuses',
-    routeLines: routeLines.filter(forMpkBus)
+    routeLines: routeLines.filter(forMpkBus),
+    isVisible: false,
+    isMeasured: false
   },
   {
     id: 'commune_other',
@@ -46,9 +51,12 @@ export const commune = [
     items: stops.filter(forOtherBus),
     count: 4,
     color: '#333',
+    iconRaw: icons.otherBus,
     icon: makeIcon(icons.otherBus, 16, 16, 'otherBus'),
     rangesKey: 'otherBuses',
-    routeLines: routeLines.filter(forOtherBus)
+    routeLines: routeLines.filter(forOtherBus),
+    isVisible: false,
+    isMeasured: false
   }
 ];
 
@@ -59,7 +67,10 @@ export const shops = [
     items: lidlShops,
     count: 2,
     color: '#0050AA',
-    icon: makeIcon(icons.lidl, 32, 32, 'lidl')
+    iconRaw: icons.lidl,
+    icon: makeIcon(icons.lidl, 32, 32, 'lidl'),
+    isVisible: false,
+    isMeasured: false
   },
   {
     id: 'biedronka',
@@ -67,7 +78,10 @@ export const shops = [
     items: biedronkaShops,
     count: 2,
     color: '#E30713',
-    icon: makeIcon(icons.biedronka, 32, 48, 'biedronka')
+    iconRaw: icons.biedronka,
+    icon: makeIcon(icons.biedronka, 32, 48, 'biedronka'),
+    isVisible: false,
+    isMeasured: false
   },
   {
     id: 'zabka',
@@ -75,7 +89,10 @@ export const shops = [
     items: zabkaShops,
     count: 2,
     color: '#01672C',
-    icon: makeIcon(icons.zabka, 18, 24, 'zabka')
+    iconRaw: icons.zabka,
+    icon: makeIcon(icons.zabka, 18, 24, 'zabka'),
+    isVisible: false,
+    isMeasured: false
   },
   {
     id: 'inpost',
@@ -83,7 +100,10 @@ export const shops = [
     items: inposts,
     count: 1,
     color: '#000000',
-    icon: makeIcon(icons.inpost, 36, 24, 'inpost')
+    iconRaw: icons.inpost,
+    icon: makeIcon(icons.inpost, 36, 24, 'inpost'),
+    isVisible: false,
+    isMeasured: false
   },
   {
     id: 'pharmacy',
@@ -91,6 +111,9 @@ export const shops = [
     items: pharmacies,
     count: 2,
     color: '#007F0E',
-    icon: makeIcon(icons.pharmacy, 24, 24, 'pharmacy')
+    iconRaw: icons.pharmacy,
+    icon: makeIcon(icons.pharmacy, 24, 24, 'pharmacy'),
+    isVisible: false,
+    isMeasured: false
   }
 ];

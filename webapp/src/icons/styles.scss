@@ -1,14 +1,14 @@
-.source-tram {
-  background-image: url('./tram.png');
-  background-size: 16px 16px;
+.source-commune_tram {
+  fill: url('#tram');
+  // background-size: 16px 16px;
 }
 
-.source-bus {
+.source-commune_bus {
   background-image: url('./bus.png');
   background-size: 16px 16px;
 }
 
-.source-otherBus {
+.source-commune_bus-other {
   background-image: url('./otherBus.png');
   background-size: 16px 16px;
 }

@@ -46,7 +46,7 @@ const saveLatLngZoom = debounce(({ target }) => {
 
 export default function setupMap() {
   const mapInstance = L.map('map', {
-    preferCanvas: true
+    // preferCanvas: true
   });
 
   L

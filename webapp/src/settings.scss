@@ -1,0 +1,71 @@
+$grid: 16px;
+
+.settings-toggle {
+  height: $grid * 2;
+  width: $grid * 2;
+  position: absolute;
+  right: $grid;
+  bottom: $grid;
+  z-index: 1003;
+  background: #fff;
+  border-radius: 4px;
+  padding: 4px;
+  box-shadow: 0 0 4px #000;
+  cursor: pointer;
+}
+
+.settings-toggle__img {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
+.settings-container {
+  font-family: Verdana, Arial;
+  font-size: 12px;
+  position: fixed;
+  top: $grid /2;
+  right: $grid /2;
+  bottom: $grid /2;
+  left: $grid /2;
+  background: rgba(255,255,255,0.9);
+  z-index: 1002;
+  transition: left 300ms;
+  border-radius: 4px;
+  box-shadow: 0 0 4px #000;
+  overflow: hidden;
+
+  &.is-hidden {
+    left: 100%;
+  }
+}
+
+.settings-header {
+  font-size: 20px;
+  padding: $grid;
+}
+
+.settings-item {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: $grid;
+  box-sizing: border-box;
+}
+
+.settings-item__img {
+  border: solid 1px #ccc;
+  max-height: $grid * 4;
+  width: $grid * 4;
+}
+
+.settings-item__label {
+  width: 100px;
+  margin: 0 $grid;
+}
+
+.settings-item-checkbox {
+  display: flex;
+  align-items: center;
+  margin: 0 $grid;
+}

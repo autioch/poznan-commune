@@ -4,8 +4,6 @@ import { commune, shops } from './consts';
 import { haversine1 } from './haversine';
 import icons from './icons';
 
-const all = [...commune, ...shops];
-
 const myIcon = L.icon({
   iconUrl: icons.smile,
   iconSize: [32, 32],
@@ -28,8 +26,8 @@ function removeDistances(mapInstance) {
   polylines = [];
 }
 
-function showDistances(mapInstance, latlng) {
-  polylines = all.map((source) => L.polyline([
+function showDistances(sources, mapInstance, latlng) {
+  polylines = sources.map((source) => L.polyline([
     source.closest.map(([, item]) => [latlng, [item.latitude, item.longitude] ])
   ], {
     weight: 2,
@@ -49,10 +47,12 @@ function shopInfo([dist, shop]) {
 
 function showInfo(mapInstance) {
   const communeHtml = commune
+    .filter((source) => source.isMeasured)
     .map((source) => `<div>${source.label}</div><ol>${source.closest.map(stopInfo).join('')}</ol>`)
     .join('');
 
   const shopsHtml = shops
+    .filter((source) => source.isMeasured)
     .map((source) => `<div>${source.label}</div><ol>${source.closest.map(shopInfo).join('')}</ol>`)
     .join('');
 
@@ -73,10 +73,10 @@ function showInfo(mapInstance) {
   window.distance.append(closeEl);
 }
 
-function setupClosest([lat, lng]) {
+function setupClosest(sources, [lat, lng]) {
   const latlng = [lat, lng];
 
-  all.forEach((source) => {
+  sources.forEach((source) => {
     const distances = source.items.map((item) => [haversine1(latlng, [item.latitude, item.longitude]), item]);
 
     distances.sort(([dist1], [dist2]) => dist1 - dist2);
@@ -93,7 +93,9 @@ export default function showClosest(mapInstance, latlng) {
 
   mapInstance.addLayer(clickMarker);
 
-  setupClosest(latlng);
-  showDistances(mapInstance, latlng);
+  const sources = [...commune, ...shops].filter((source) => source.isMeasured);
+
+  setupClosest(sources, latlng);
+  showDistances(sources, mapInstance, latlng);
   showInfo(mapInstance);
 }
