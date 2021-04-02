@@ -700,6 +700,56 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	border-right-color: #fff;
 	}
 
+.current-location {
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  right: 80px;
+  bottom: 16px;
+  z-index: 1003;
+  background: #fff;
+  border-radius: 4px;
+  padding: 4px;
+  -webkit-box-shadow: 0 0 4px #000;
+  box-shadow: 0 0 4px #000;
+  cursor: pointer; }
+
+.current-location__img {
+  height: 100%;
+  width: 100%;
+  display: block; }
+
+.source-commune_tram {
+  fill: url("#tram"); }
+
+.source-commune_bus {
+  background-image: url(/files/bus.png);
+  background-size: 16px 16px; }
+
+.source-commune_bus-other {
+  background-image: url(/files/otherBus.png);
+  background-size: 16px 16px; }
+
+.source-lidl {
+  background-image: url(/files/lidl.png);
+  background-size: 32px 32px; }
+
+.source-biedronka {
+  background-image: url(/files/biedronka.png);
+  background-size: 32px 48px; }
+
+.source-zabka {
+  background-image: url(/files/zabka.png);
+  background-size: 18px 24px; }
+
+.source-inpost {
+  background-image: url(/files/inpost.png);
+  background-size: 36px 24px; }
+
+.source-pharmacy {
+  background-image: url(/files/pharmacy.png);
+  background-size: 24px 24px; }
+
 .settings-toggle {
   height: 32px;
   width: 32px;
@@ -771,35 +821,4 @@ svg.leaflet-image-layer.leaflet-interactive path {
   -ms-flex-align: center;
   align-items: center;
   margin: 0 16px; }
-
-.source-commune_tram {
-  fill: url("#tram"); }
-
-.source-commune_bus {
-  background-image: url(/files/bus.png);
-  background-size: 16px 16px; }
-
-.source-commune_bus-other {
-  background-image: url(/files/otherBus.png);
-  background-size: 16px 16px; }
-
-.source-lidl {
-  background-image: url(/files/lidl.png);
-  background-size: 32px 32px; }
-
-.source-biedronka {
-  background-image: url(/files/biedronka.png);
-  background-size: 32px 48px; }
-
-.source-zabka {
-  background-image: url(/files/zabka.png);
-  background-size: 18px 24px; }
-
-.source-inpost {
-  background-image: url(/files/inpost.png);
-  background-size: 36px 24px; }
-
-.source-pharmacy {
-  background-image: url(/files/pharmacy.png);
-  background-size: 24px 24px; }
 
