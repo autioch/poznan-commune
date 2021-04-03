@@ -80,7 +80,7 @@ function setupClosest(sources, [lat, lng]) {
     const distances = source.items.map((item) => [haversine1(latlng, [item.latitude, item.longitude]), item]);
 
     distances.sort(([dist1], [dist2]) => dist1 - dist2);
-    source.closest = distances.slice(0, source.count);
+    source.closest = distances.slice(0, source.measureCount);
   });
 }
 

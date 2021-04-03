@@ -28,12 +28,13 @@ $grid: 16px;
   right: $grid /2;
   bottom: $grid /2;
   left: $grid /2;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.5);
   z-index: 1002;
   transition: left 300ms;
   border-radius: 4px;
   box-shadow: 0 0 4px #000;
-  overflow: hidden;
+  overflow: auto;
+  backdrop-filter: blur(5px);
 
   &.is-hidden {
     left: 100%;
@@ -53,10 +54,15 @@ $grid: 16px;
   box-sizing: border-box;
 }
 
+.settings-item__info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .settings-item__img {
-  border: solid 1px #ccc;
-  max-height: $grid * 4;
-  width: $grid * 4;
+  max-height: $grid * 2;
+  max-width: $grid * 2;
 }
 
 .settings-item__label {
@@ -68,4 +74,11 @@ $grid: 16px;
   display: flex;
   align-items: center;
   margin: 0 $grid;
+}
+
+.settings-table {
+  border-spacing: 0;
+  border: solid 1px #aaa;
+  width: 100%;
+  height: 100%;
 }

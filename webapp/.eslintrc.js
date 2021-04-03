@@ -8,6 +8,7 @@ module.exports = {
     'line-comment-position': ['off'],
     'no-inline-comments': ['off'],
     'no-magic-numbers': ['off'],
+    'no-console': ['off'],
 
     'simple-import-sort/imports': ['warn', {
       groups: [
